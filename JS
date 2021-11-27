@@ -1,0 +1,62 @@
+//1
+class Worker {
+    constructor(name, surname, rate, days) {
+        this.name = name;
+        this.surname = surname;
+        this.rate = rate;
+        this.days = days;
+    }
+    getSalary(){
+     return this.rate*this.days;
+    }
+    }
+const Worker1 = new Worker('John','Weak',35,250);
+const Worker2 = new Worker('Jeffrey','Bezos',50,148);
+let SalarySum= Worker1.getSalary() + Worker2.getSalary();
+console.log('Sum of Salary: ', SalarySum);
+
+//2
+class MyString {
+    constructor(str) {
+        this.str = str;
+ }
+ reverse(){
+ return this.str.split("").reverse().join("");
+ }
+ ucFirst(){
+ return this.str.charAt(0).toUpperCase() + this.str.slice(1);
+ }
+ ucWords(){
+  return this.str.replace(/(^|\s)\S/g, function(a) {return a.toUpperCase()});
+ }
+     }
+ const str=new MyString('i am learning java script'); 
+console.log(str.reverse());
+console.log(str.ucFirst());
+console.log(str.ucWords());
+
+//3
+class Validator{
+isEmail(str){
+const isEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+return isEmail.test(str);
+}
+isDomain(str){
+const isDomain=/^https?:\/\/(?:[-\w]+\.)?([-\w]+)\.\w+(?:\.\w+)?\/?.$/i;
+return isDomain.test(str);
+}
+isDate(str){
+const isDate=/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
+return isDate.test(str);
+}
+isPhone(str){
+const isPhone=/^[\d]{3}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/;
+return isPhone.test(str);
+}
+}
+
+const validator= new Validator();
+console.log('Valid Email: '+validator.isEmail('javascript@gmail.com')+' '+validator.isEmail('java script@gmail.com'));
+console.log('Valid Domain: '+validator.isDomain('http://www.google.com'  )+' '+validator.isDomain('https://jsfiddle.net/:)') );
+console.log('Valid Date: '+validator.isDate('16.05.2000')+' '+validator.isDate('16.05-121'));
+console.log('Valid Phone: '+validator.isPhone('380 (555) 123-45-67')+' '+validator.isPhone('380 555 123.45.67'));
